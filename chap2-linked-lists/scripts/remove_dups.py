@@ -2,22 +2,8 @@
 
 import LinkedListNode
 
-def createLinkedList():
-    node1 = LinkedListNode.LinkedListNode(3)
-    node2 = LinkedListNode.LinkedListNode(5)
-    node3 = LinkedListNode.LinkedListNode(2)
-    node4 = LinkedListNode.LinkedListNode(10)
-    node5 = LinkedListNode.LinkedListNode(2)
-    node6 = LinkedListNode.LinkedListNode(18)
-    node1.nextNode = node2
-    node2.nextNode = node3
-    node3.nextNode = node4
-    node4.nextNode = node5
-    node5.nextNode = node6
-    return node1
-
-if __name__ == "__main__":
-    headNode = createLinkedList()
+def remove_dups():
+    headNode = LinkedListNode.createLinkedList()
     d = {}
     prev = None
     current = headNode
@@ -29,3 +15,23 @@ if __name__ == "__main__":
             prev.nextNode = current.nextNode
         current = current.nextNode
     LinkedListNode.displayList(headNode)
+
+def remove_dups_without_buffer():
+    headNode = LinkedListNode.createLinkedList()
+    current = headNode
+    prev = headNode
+    while current != None and current.nextNode != None:
+        runner = current.nextNode
+        while runner != None:
+            if runner.data == current.data:
+                prev.nextNode = runner.nextNode
+            else:
+                prev = runner
+            runner = runner.nextNode
+        current = current.nextNode
+    LinkedListNode.displayList(headNode)
+
+if __name__ == "__main__":
+    # remove_dups()
+    remove_dups_without_buffer()
+    
