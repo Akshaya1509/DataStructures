@@ -13,5 +13,5 @@ def n_steps(n, memo):
     return memo[n]
 
 if __name__ == "__main__":
-memo = {}
-print(n_steps(10, memo))
+    memo = {}
+    print(n_steps(10, memo))
